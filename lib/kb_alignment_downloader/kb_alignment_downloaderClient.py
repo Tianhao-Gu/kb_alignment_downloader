@@ -33,6 +33,30 @@ class kb_alignment_downloader(object):
             trust_all_ssl_certificates=trust_all_ssl_certificates,
             auth_svc=auth_svc)
 
+    def export_rna_seq_alignment_as_excel(self, params, context=None):
+        """
+        :param params: instance of type "ExportParams" (input and output
+           structure functions for standard downloaders) -> structure:
+           parameter "input_ref" of String
+        :returns: instance of type "ExportOutput" -> structure: parameter
+           "shock_id" of String
+        """
+        return self._client.call_method(
+            'kb_alignment_downloader.export_rna_seq_alignment_as_excel',
+            [params], self._service_ver, context)
+
+    def export_rna_seq_alignment_as_tsv(self, params, context=None):
+        """
+        :param params: instance of type "ExportParams" (input and output
+           structure functions for standard downloaders) -> structure:
+           parameter "input_ref" of String
+        :returns: instance of type "ExportOutput" -> structure: parameter
+           "shock_id" of String
+        """
+        return self._client.call_method(
+            'kb_alignment_downloader.export_rna_seq_alignment_as_tsv',
+            [params], self._service_ver, context)
+
     def status(self, context=None):
         return self._client.call_method('kb_alignment_downloader.status',
                                         [], self._service_ver, context)

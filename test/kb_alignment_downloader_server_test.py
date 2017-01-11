@@ -71,6 +71,13 @@ class kb_alignment_downloaderTest(unittest.TestCase):
     def getContext(self):
         return self.__class__.ctx
 
+    def getDefaultParams(self):
+        default_input_params = {
+            'input_ref': '123456'
+        }
+
+        return default_input_params
+
     # NOTE: According to Python unittest naming rules test method names should start from 'test'. # noqa
     def test_your_method(self):
         # Prepare test objects in workspace if needed using
@@ -83,3 +90,48 @@ class kb_alignment_downloaderTest(unittest.TestCase):
         # Check returned data with
         # self.assertEqual(ret[...], ...) or other unittest methods
         pass
+
+    def test_contructor(self):
+        print '------ Testing Contructor Method ------'
+        ret = self.getImpl()
+        print 'self.config: %s' % ret.config
+        print 'self.callback_url: %s' % ret.config['SDK_CALLBACK_URL']
+        self.assertIsNotNone(ret.config)
+        self.assertIsNotNone(ret.config['SDK_CALLBACK_URL'])
+        print '------ Testing Contructor Method OK ------'
+
+    def test_validate_upload_fastq_file_parameters(self):
+        print '------ Testing validate_upload_fastq_file_parameters Method ------'
+        invalidate_input_params = self.getDefaultParams()
+        del invalidate_input_params['input_ref']
+        with self.assertRaisesRegexp(ValueError, '"input_ref" parameter is required, but missing'):
+            self.getImpl().export_rna_seq_alignment_as_excel(self.getContext(), invalidate_input_params)
+
+        with self.assertRaisesRegexp(ValueError, '"input_ref" parameter is required, but missing'):
+            self.getImpl().export_rna_seq_alignment_as_tsv(self.getContext(), invalidate_input_params)
+
+        print '------ Testing validate_upload_fastq_file_parameters Method OK ------'
+
+    def test_export_rna_seq_alignment_as_excel(self):
+        print '------ Testing export_rna_seq_alignment_as_excel Method ------'
+        params = self.getDefaultParams()
+        ret = self.getImpl().export_rna_seq_alignment_as_excel(self.getContext(), params)
+
+        print '------ Testing export_rna_seq_alignment_as_excelh Method OK ------'
+
+    def test_export_rna_seq_alignment_as_tsv(self):
+        print '------ Testing export_rna_seq_alignment_as_tsv Method ------'
+        params = self.getDefaultParams()
+        ret = self.getImpl().export_rna_seq_alignment_as_tsv(self.getContext(), params)
+
+        print '------ Testing export_rna_seq_alignment_as_tsvh Method OK ------'
+        
+
+
+
+
+
+
+
+
+
