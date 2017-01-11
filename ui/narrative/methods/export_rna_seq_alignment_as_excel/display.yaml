@@ -1,0 +1,28 @@
+name     : RNASeqAlignment To Excel
+subtitle : Download RNASeq Alignment Set from your Narrative to excel format
+tooltip  : Download RNASeq Alignment Set from your Narrative to excel format
+
+screenshots :
+    []
+
+suggestions :
+    apps:
+        related :
+            []
+        next :
+            []
+    methods:
+        related :
+            []
+        next :
+            []
+
+parameters :
+    input_ref :
+        ui-name : RNASEQ ALIGNMENT SET REF
+        short-hint : RNASeq Alignment Set Reference
+        long-hint  : RNASeq Alignment Set Reference
+        
+description : none
+
+technical-description : none
