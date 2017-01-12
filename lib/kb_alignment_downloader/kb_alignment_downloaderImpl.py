@@ -40,11 +40,13 @@ class kb_alignment_downloader:
 
     def export_rna_seq_alignment_accepted_bam(self, ctx, params):
         """
-        :param params: instance of type "ExportParams" (input and output
-           structure functions for standard downloaders) -> structure:
-           parameter "input_ref" of String
-        :returns: instance of type "ExportOutput" -> structure: parameter
-           "shock_id" of String
+        Download 'accepted_hits.bam' file from RNASeq-Alignment archive zip file
+
+        params: 
+            input_ref: RNASeq-Alignment file ref ID
+
+        returns:
+            shock_id: Shock ID of downloadable file in download_type format
         """
         # ctx is the context object
         # return variables are: output
@@ -66,11 +68,13 @@ class kb_alignment_downloader:
 
     def export_rna_seq_alignment_accepted_sam(self, ctx, params):
         """
-        :param params: instance of type "ExportParams" (input and output
-           structure functions for standard downloaders) -> structure:
-           parameter "input_ref" of String
-        :returns: instance of type "ExportOutput" -> structure: parameter
-           "shock_id" of String
+        Download 'accepted_hits.sam' file from RNASeq-Alignment archive zip file
+        
+        params: 
+            input_ref: RNASeq-Alignment file ref ID
+
+        returns:
+            shock_id: Shock ID of downloadable file in download_type format
         """
         # ctx is the context object
         # return variables are: output
@@ -92,11 +96,13 @@ class kb_alignment_downloader:
 
     def export_rna_seq_alignment_accepted_unsorted_bam(self, ctx, params):
         """
-        :param params: instance of type "ExportParams" (input and output
-           structure functions for standard downloaders) -> structure:
-           parameter "input_ref" of String
-        :returns: instance of type "ExportOutput" -> structure: parameter
-           "shock_id" of String
+        Download 'accepted_hits_unsorted.bam' file from RNASeq-Alignment archive zip file
+        
+        params: 
+            input_ref: RNASeq-Alignment file ref ID
+
+        returns:
+            shock_id: Shock ID of downloadable file in download_type format
         """
         # ctx is the context object
         # return variables are: output
@@ -118,11 +124,13 @@ class kb_alignment_downloader:
 
     def export_rna_seq_alignment_as_zip(self, ctx, params):
         """
-        :param params: instance of type "ExportParams" (input and output
-           structure functions for standard downloaders) -> structure:
-           parameter "input_ref" of String
-        :returns: instance of type "ExportOutput" -> structure: parameter
-           "shock_id" of String
+        Download original archive zip file from RNASeq-Alignment
+        
+        params: 
+            input_ref: RNASeq-Alignment file ref ID
+
+        returns:
+            shock_id: Shock ID of downloadable file in download_type format
         """
         # ctx is the context object
         # return variables are: output
@@ -144,11 +152,18 @@ class kb_alignment_downloader:
 
     def export_rna_seq_alignment(self, ctx, params):
         """
-        :param params: instance of type "GeneralExportParams" (input
-           structure function for dynamic downloader) -> structure: parameter
-           "input_ref" of String, parameter "download_type" of String
-        :returns: instance of type "ExportOutput" -> structure: parameter
-           "shock_id" of String
+        Dynamically download RNASeq Alignment's archive zip file or 'accepted_hits.bam', 'accepted_hits.sam' or 'accepted_hits_unsorted.bam' from RNASeq Alignment's archive file
+
+        params: 
+            input_ref: RNASeq-Alignment file ref ID
+            download_type: download file type 
+                   'zip' -> original archive zip file
+                   'accepted_bam' -> unpacked 'accepted_hits.bam' file
+                   'accepted_sam' -> unpacked 'accepted_hits.sam' file
+                   'unsorted_bam' -> unpacked 'accepted_hits_unsorted.bam' file
+                   
+        returns:
+            shock_id: Shock ID of downloadable file in download_type format
         """
         # ctx is the context object
         # return variables are: output
