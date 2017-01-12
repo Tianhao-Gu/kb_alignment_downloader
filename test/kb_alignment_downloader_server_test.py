@@ -91,10 +91,10 @@ class kb_alignment_downloaderTest(unittest.TestCase):
         invalidate_input_params = self.getDefaultParams()
         del invalidate_input_params['input_ref']
         with self.assertRaisesRegexp(ValueError, '"input_ref" parameter is required, but missing'):
-            self.getImpl().export_rna_seq_alignment_as_excel(self.getContext(), invalidate_input_params)
+            self.getImpl().export_rna_seq_alignment_as_zip(self.getContext(), invalidate_input_params)
 
         with self.assertRaisesRegexp(ValueError, '"input_ref" parameter is required, but missing'):
-            self.getImpl().export_rna_seq_alignment_as_tsv(self.getContext(), invalidate_input_params)
+            self.getImpl().export_rna_seq_alignment_accepted_bam(self.getContext(), invalidate_input_params)
 
         print '------ Testing validate_upload_fastq_file_parameters Method OK ------'
 
