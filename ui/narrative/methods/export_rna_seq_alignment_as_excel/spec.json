@@ -19,6 +19,37 @@
       "default_values" : [ "" ],
       "field_type" : "text",
       "text_options": {}
+    },
+    {
+      "id" : "download_type",
+      "optional" : false,
+      "advanced" : false,
+      "allow_multiple" : false,
+      "default_values" : [ "accepted_bam" ],
+      "field_type" : "dropdown",
+      "dropdown_options": 
+      {
+        "options": 
+        [
+         
+          {
+              "display": "accepted_bam file ('accepted_hits.bam')",
+              "value": "accepted_bam"
+          },
+          {
+              "display": "accepted_sam file ('accepted_hits.sam')",
+              "value": "accepted_sam"
+          },
+          {
+              "display": "unsorted_bam file ('accepted_hits_unsorted.bam')",
+              "value": "unsorted_bam"
+          },
+          {
+              "display": "original archive .zip file",
+              "value": "zip"
+          }
+        ]
+      }
     }
   ],
   "behavior" : 
@@ -27,12 +58,16 @@
     {
       "url" : "",
       "name" : "kb_alignment_downloader",
-      "method" : "export_rna_seq_alignment_as_excel",
+      "method" : "export_rna_seq_alignment",
       "input_mapping" : 
       [
         {
           "input_parameter": "input_ref",
           "target_property": "input_ref"
+        },
+        {
+          "input_parameter": "download_type",
+          "target_property": "download_type"
         }
       ],
       "output_mapping" : 

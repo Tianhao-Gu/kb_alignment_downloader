@@ -1,6 +1,6 @@
-name     : RNASeqAlignment To Excel
-subtitle : Download RNASeq Alignment Set from your Narrative to excel format
-tooltip  : Download RNASeq Alignment Set from your Narrative to excel format
+name     : RNASeqAlignment Downloader
+subtitle : Download RNASeq Alignment Archive File From Your Narrative
+tooltip  : Download RNASeq Alignment Archive File From Your Narrative
 
 screenshots :
     []
@@ -19,10 +19,14 @@ suggestions :
 
 parameters :
     input_ref :
-        ui-name : RNASEQ ALIGNMENT SET REF
+        ui-name : RNASEQ ALIGNMENT REF
         short-hint : RNASeq Alignment Set Reference
         long-hint  : RNASeq Alignment Set Reference
-        
+    download_type:
+        ui-name : TARGET DOWNLOAD FILE
+        short-hint : Target download file from original archive zip file
+        long-hint  : Target download file from original archive zip file
+
 description : none
 
 technical-description : none
