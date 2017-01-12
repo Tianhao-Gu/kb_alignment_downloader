@@ -73,7 +73,7 @@ class kb_alignment_downloaderTest(unittest.TestCase):
 
     def getDefaultParams(self):
         default_input_params = {
-            'input_ref': '123456'
+            'input_ref': '2778/3/1'
         }
 
         return default_input_params
@@ -91,40 +91,57 @@ class kb_alignment_downloaderTest(unittest.TestCase):
         # self.assertEqual(ret[...], ...) or other unittest methods
         pass
 
-    def test_contructor(self):
-        print '------ Testing Contructor Method ------'
-        ret = self.getImpl()
-        print 'self.config: %s' % ret.config
-        print 'self.callback_url: %s' % ret.config['SDK_CALLBACK_URL']
-        self.assertIsNotNone(ret.config)
-        self.assertIsNotNone(ret.config['SDK_CALLBACK_URL'])
-        print '------ Testing Contructor Method OK ------'
+    # def test_contructor(self):
+    #     print '------ Testing Contructor Method ------'
+    #     ret = self.getImpl()
+    #     self.assertIsNotNone(ret.config)
+    #     self.assertIsNotNone(ret.config['SDK_CALLBACK_URL'])
+    #     self.assertIsNotNone(ret.config['KB_AUTH_TOKEN'])
+    #     print '------ Testing Contructor Method OK ------'
 
-    def test_validate_upload_fastq_file_parameters(self):
-        print '------ Testing validate_upload_fastq_file_parameters Method ------'
-        invalidate_input_params = self.getDefaultParams()
-        del invalidate_input_params['input_ref']
-        with self.assertRaisesRegexp(ValueError, '"input_ref" parameter is required, but missing'):
-            self.getImpl().export_rna_seq_alignment_as_excel(self.getContext(), invalidate_input_params)
+    # def test_validate_upload_fastq_file_parameters(self):
+    #     print '------ Testing validate_upload_fastq_file_parameters Method ------'
+    #     invalidate_input_params = self.getDefaultParams()
+    #     del invalidate_input_params['input_ref']
+    #     with self.assertRaisesRegexp(ValueError, '"input_ref" parameter is required, but missing'):
+    #         self.getImpl().export_rna_seq_alignment_as_excel(self.getContext(), invalidate_input_params)
 
-        with self.assertRaisesRegexp(ValueError, '"input_ref" parameter is required, but missing'):
-            self.getImpl().export_rna_seq_alignment_as_tsv(self.getContext(), invalidate_input_params)
+    #     with self.assertRaisesRegexp(ValueError, '"input_ref" parameter is required, but missing'):
+    #         self.getImpl().export_rna_seq_alignment_as_tsv(self.getContext(), invalidate_input_params)
 
-        print '------ Testing validate_upload_fastq_file_parameters Method OK ------'
+    #     print '------ Testing validate_upload_fastq_file_parameters Method OK ------'
 
-    def test_export_rna_seq_alignment_as_excel(self):
-        print '------ Testing export_rna_seq_alignment_as_excel Method ------'
+    def test_export_rna_seq_alignment_as_zip(self):
+        print '------ Testing export_rna_seq_alignment_as_zip Method ------'
         params = self.getDefaultParams()
-        ret = self.getImpl().export_rna_seq_alignment_as_excel(self.getContext(), params)
+        ret = self.getImpl().export_rna_seq_alignment_as_zip(self.getContext(), params)
+        self.assertTrue(ret[0].has_key('shock_id'))
 
-        print '------ Testing export_rna_seq_alignment_as_excelh Method OK ------'
+        print '------ Testing export_rna_seq_alignment_as_zip Method OK ------'
 
-    def test_export_rna_seq_alignment_as_tsv(self):
-        print '------ Testing export_rna_seq_alignment_as_tsv Method ------'
+    def test_export_rna_seq_alignment_accepted_bam(self):
+        print '------ Testing export_rna_seq_alignment_accepted_bam Method ------'
         params = self.getDefaultParams()
-        ret = self.getImpl().export_rna_seq_alignment_as_tsv(self.getContext(), params)
+        ret = self.getImpl().export_rna_seq_alignment_accepted_bam(self.getContext(), params)
+        self.assertTrue(ret[0].has_key('shock_id'))
 
-        print '------ Testing export_rna_seq_alignment_as_tsvh Method OK ------'
+        print '------ Testing export_rna_seq_alignment_accepted_bam Method OK ------'
+
+    # def test_export_rna_seq_alignment_accepted_sam(self):
+    #     print '------ Testing export_rna_seq_alignment_accepted_sam Method ------'
+    #     params = self.getDefaultParams()
+    #     ret = self.getImpl().export_rna_seq_alignment_accepted_sam(self.getContext(), params)
+    #     self.assertTrue(ret[0].has_key('shock_id'))
+
+    #     print '------ Testing export_rna_seq_alignment_accepted_sam Method OK ------'
+
+    # def test_export_rna_seq_alignment_accepted_unsorted_bam(self):
+    #     print '------ Testing export_rna_seq_alignment_accepted_unsorted_bam Method ------'
+    #     params = self.getDefaultParams()
+    #     ret = self.getImpl().export_rna_seq_alignment_accepted_unsorted_bam(self.getContext(), params)
+    #     self.assertTrue(ret[0].has_key('shock_id'))
+
+    #     print '------ Testing export_rna_seq_alignment_accepted_unsorted_bam Method OK ------'
         
 
 

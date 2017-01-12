@@ -163,7 +163,7 @@ public class KbAlignmentDownloaderClient {
     }
 
     /**
-     * <p>Original spec-file function name: export_rna_seq_alignment_as_excel</p>
+     * <p>Original spec-file function name: export_rna_seq_alignment_as_zip</p>
      * <pre>
      * </pre>
      * @param   params   instance of type {@link us.kbase.kbalignmentdownloader.ExportParams ExportParams}
@@ -171,16 +171,16 @@ public class KbAlignmentDownloaderClient {
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public ExportOutput exportRnaSeqAlignmentAsExcel(ExportParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public ExportOutput exportRnaSeqAlignmentAsZip(ExportParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
         args.add(params);
         TypeReference<List<ExportOutput>> retType = new TypeReference<List<ExportOutput>>() {};
-        List<ExportOutput> res = caller.jsonrpcCall("kb_alignment_downloader.export_rna_seq_alignment_as_excel", args, retType, true, true, jsonRpcContext, this.serviceVersion);
+        List<ExportOutput> res = caller.jsonrpcCall("kb_alignment_downloader.export_rna_seq_alignment_as_zip", args, retType, true, true, jsonRpcContext, this.serviceVersion);
         return res.get(0);
     }
 
     /**
-     * <p>Original spec-file function name: export_rna_seq_alignment_as_tsv</p>
+     * <p>Original spec-file function name: export_rna_seq_alignment_accepted_bam</p>
      * <pre>
      * </pre>
      * @param   params   instance of type {@link us.kbase.kbalignmentdownloader.ExportParams ExportParams}
@@ -188,11 +188,62 @@ public class KbAlignmentDownloaderClient {
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public ExportOutput exportRnaSeqAlignmentAsTsv(ExportParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public ExportOutput exportRnaSeqAlignmentAcceptedBam(ExportParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
         args.add(params);
         TypeReference<List<ExportOutput>> retType = new TypeReference<List<ExportOutput>>() {};
-        List<ExportOutput> res = caller.jsonrpcCall("kb_alignment_downloader.export_rna_seq_alignment_as_tsv", args, retType, true, true, jsonRpcContext, this.serviceVersion);
+        List<ExportOutput> res = caller.jsonrpcCall("kb_alignment_downloader.export_rna_seq_alignment_accepted_bam", args, retType, true, true, jsonRpcContext, this.serviceVersion);
+        return res.get(0);
+    }
+
+    /**
+     * <p>Original spec-file function name: export_rna_seq_alignment_accepted_sam</p>
+     * <pre>
+     * </pre>
+     * @param   params   instance of type {@link us.kbase.kbalignmentdownloader.ExportParams ExportParams}
+     * @return   parameter "output" of type {@link us.kbase.kbalignmentdownloader.ExportOutput ExportOutput}
+     * @throws IOException if an IO exception occurs
+     * @throws JsonClientException if a JSON RPC exception occurs
+     */
+    public ExportOutput exportRnaSeqAlignmentAcceptedSam(ExportParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+        List<Object> args = new ArrayList<Object>();
+        args.add(params);
+        TypeReference<List<ExportOutput>> retType = new TypeReference<List<ExportOutput>>() {};
+        List<ExportOutput> res = caller.jsonrpcCall("kb_alignment_downloader.export_rna_seq_alignment_accepted_sam", args, retType, true, true, jsonRpcContext, this.serviceVersion);
+        return res.get(0);
+    }
+
+    /**
+     * <p>Original spec-file function name: export_rna_seq_alignment_accepted_unsorted_bam</p>
+     * <pre>
+     * </pre>
+     * @param   params   instance of type {@link us.kbase.kbalignmentdownloader.ExportParams ExportParams}
+     * @return   parameter "output" of type {@link us.kbase.kbalignmentdownloader.ExportOutput ExportOutput}
+     * @throws IOException if an IO exception occurs
+     * @throws JsonClientException if a JSON RPC exception occurs
+     */
+    public ExportOutput exportRnaSeqAlignmentAcceptedUnsortedBam(ExportParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+        List<Object> args = new ArrayList<Object>();
+        args.add(params);
+        TypeReference<List<ExportOutput>> retType = new TypeReference<List<ExportOutput>>() {};
+        List<ExportOutput> res = caller.jsonrpcCall("kb_alignment_downloader.export_rna_seq_alignment_accepted_unsorted_bam", args, retType, true, true, jsonRpcContext, this.serviceVersion);
+        return res.get(0);
+    }
+
+    /**
+     * <p>Original spec-file function name: export_rna_seq_alignment</p>
+     * <pre>
+     * </pre>
+     * @param   params   instance of type {@link us.kbase.kbalignmentdownloader.GeneralExportParams GeneralExportParams}
+     * @return   parameter "output" of type {@link us.kbase.kbalignmentdownloader.ExportOutput ExportOutput}
+     * @throws IOException if an IO exception occurs
+     * @throws JsonClientException if a JSON RPC exception occurs
+     */
+    public ExportOutput exportRnaSeqAlignment(GeneralExportParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+        List<Object> args = new ArrayList<Object>();
+        args.add(params);
+        TypeReference<List<ExportOutput>> retType = new TypeReference<List<ExportOutput>>() {};
+        List<ExportOutput> res = caller.jsonrpcCall("kb_alignment_downloader.export_rna_seq_alignment", args, retType, true, true, jsonRpcContext, this.serviceVersion);
         return res.get(0);
     }
 

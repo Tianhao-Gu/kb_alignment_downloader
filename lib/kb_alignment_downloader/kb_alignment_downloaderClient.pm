@@ -109,9 +109,9 @@ sub new
 
 
 
-=head2 export_rna_seq_alignment_as_excel
+=head2 export_rna_seq_alignment_as_zip
 
-  $output = $obj->export_rna_seq_alignment_as_excel($params)
+  $output = $obj->export_rna_seq_alignment_as_zip($params)
 
 =over 4
 
@@ -151,7 +151,7 @@ ExportOutput is a reference to a hash where the following keys are defined:
 
 =cut
 
- sub export_rna_seq_alignment_as_excel
+ sub export_rna_seq_alignment_as_zip
 {
     my($self, @args) = @_;
 
@@ -160,7 +160,7 @@ ExportOutput is a reference to a hash where the following keys are defined:
     if ((my $n = @args) != 1)
     {
 	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
-							       "Invalid argument count for function export_rna_seq_alignment_as_excel (received $n, expecting 1)");
+							       "Invalid argument count for function export_rna_seq_alignment_as_zip (received $n, expecting 1)");
     }
     {
 	my($params) = @args;
@@ -168,40 +168,40 @@ ExportOutput is a reference to a hash where the following keys are defined:
 	my @_bad_arguments;
         (ref($params) eq 'HASH') or push(@_bad_arguments, "Invalid type for argument 1 \"params\" (value was \"$params\")");
         if (@_bad_arguments) {
-	    my $msg = "Invalid arguments passed to export_rna_seq_alignment_as_excel:\n" . join("", map { "\t$_\n" } @_bad_arguments);
+	    my $msg = "Invalid arguments passed to export_rna_seq_alignment_as_zip:\n" . join("", map { "\t$_\n" } @_bad_arguments);
 	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
-								   method_name => 'export_rna_seq_alignment_as_excel');
+								   method_name => 'export_rna_seq_alignment_as_zip');
 	}
     }
 
     my $url = $self->{url};
     my $result = $self->{client}->call($url, $self->{headers}, {
-	    method => "kb_alignment_downloader.export_rna_seq_alignment_as_excel",
+	    method => "kb_alignment_downloader.export_rna_seq_alignment_as_zip",
 	    params => \@args,
     });
     if ($result) {
 	if ($result->is_error) {
 	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
 					       code => $result->content->{error}->{code},
-					       method_name => 'export_rna_seq_alignment_as_excel',
+					       method_name => 'export_rna_seq_alignment_as_zip',
 					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
 					      );
 	} else {
 	    return wantarray ? @{$result->result} : $result->result->[0];
 	}
     } else {
-        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method export_rna_seq_alignment_as_excel",
+        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method export_rna_seq_alignment_as_zip",
 					    status_line => $self->{client}->status_line,
-					    method_name => 'export_rna_seq_alignment_as_excel',
+					    method_name => 'export_rna_seq_alignment_as_zip',
 				       );
     }
 }
  
 
 
-=head2 export_rna_seq_alignment_as_tsv
+=head2 export_rna_seq_alignment_accepted_bam
 
-  $output = $obj->export_rna_seq_alignment_as_tsv($params)
+  $output = $obj->export_rna_seq_alignment_accepted_bam($params)
 
 =over 4
 
@@ -241,7 +241,7 @@ ExportOutput is a reference to a hash where the following keys are defined:
 
 =cut
 
- sub export_rna_seq_alignment_as_tsv
+ sub export_rna_seq_alignment_accepted_bam
 {
     my($self, @args) = @_;
 
@@ -250,7 +250,7 @@ ExportOutput is a reference to a hash where the following keys are defined:
     if ((my $n = @args) != 1)
     {
 	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
-							       "Invalid argument count for function export_rna_seq_alignment_as_tsv (received $n, expecting 1)");
+							       "Invalid argument count for function export_rna_seq_alignment_accepted_bam (received $n, expecting 1)");
     }
     {
 	my($params) = @args;
@@ -258,31 +258,303 @@ ExportOutput is a reference to a hash where the following keys are defined:
 	my @_bad_arguments;
         (ref($params) eq 'HASH') or push(@_bad_arguments, "Invalid type for argument 1 \"params\" (value was \"$params\")");
         if (@_bad_arguments) {
-	    my $msg = "Invalid arguments passed to export_rna_seq_alignment_as_tsv:\n" . join("", map { "\t$_\n" } @_bad_arguments);
+	    my $msg = "Invalid arguments passed to export_rna_seq_alignment_accepted_bam:\n" . join("", map { "\t$_\n" } @_bad_arguments);
 	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
-								   method_name => 'export_rna_seq_alignment_as_tsv');
+								   method_name => 'export_rna_seq_alignment_accepted_bam');
 	}
     }
 
     my $url = $self->{url};
     my $result = $self->{client}->call($url, $self->{headers}, {
-	    method => "kb_alignment_downloader.export_rna_seq_alignment_as_tsv",
+	    method => "kb_alignment_downloader.export_rna_seq_alignment_accepted_bam",
 	    params => \@args,
     });
     if ($result) {
 	if ($result->is_error) {
 	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
 					       code => $result->content->{error}->{code},
-					       method_name => 'export_rna_seq_alignment_as_tsv',
+					       method_name => 'export_rna_seq_alignment_accepted_bam',
 					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
 					      );
 	} else {
 	    return wantarray ? @{$result->result} : $result->result->[0];
 	}
     } else {
-        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method export_rna_seq_alignment_as_tsv",
+        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method export_rna_seq_alignment_accepted_bam",
 					    status_line => $self->{client}->status_line,
-					    method_name => 'export_rna_seq_alignment_as_tsv',
+					    method_name => 'export_rna_seq_alignment_accepted_bam',
+				       );
+    }
+}
+ 
+
+
+=head2 export_rna_seq_alignment_accepted_sam
+
+  $output = $obj->export_rna_seq_alignment_accepted_sam($params)
+
+=over 4
+
+=item Parameter and return types
+
+=begin html
+
+<pre>
+$params is a kb_alignment_downloader.ExportParams
+$output is a kb_alignment_downloader.ExportOutput
+ExportParams is a reference to a hash where the following keys are defined:
+	input_ref has a value which is a string
+ExportOutput is a reference to a hash where the following keys are defined:
+	shock_id has a value which is a string
+
+</pre>
+
+=end html
+
+=begin text
+
+$params is a kb_alignment_downloader.ExportParams
+$output is a kb_alignment_downloader.ExportOutput
+ExportParams is a reference to a hash where the following keys are defined:
+	input_ref has a value which is a string
+ExportOutput is a reference to a hash where the following keys are defined:
+	shock_id has a value which is a string
+
+
+=end text
+
+=item Description
+
+
+
+=back
+
+=cut
+
+ sub export_rna_seq_alignment_accepted_sam
+{
+    my($self, @args) = @_;
+
+# Authentication: required
+
+    if ((my $n = @args) != 1)
+    {
+	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
+							       "Invalid argument count for function export_rna_seq_alignment_accepted_sam (received $n, expecting 1)");
+    }
+    {
+	my($params) = @args;
+
+	my @_bad_arguments;
+        (ref($params) eq 'HASH') or push(@_bad_arguments, "Invalid type for argument 1 \"params\" (value was \"$params\")");
+        if (@_bad_arguments) {
+	    my $msg = "Invalid arguments passed to export_rna_seq_alignment_accepted_sam:\n" . join("", map { "\t$_\n" } @_bad_arguments);
+	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
+								   method_name => 'export_rna_seq_alignment_accepted_sam');
+	}
+    }
+
+    my $url = $self->{url};
+    my $result = $self->{client}->call($url, $self->{headers}, {
+	    method => "kb_alignment_downloader.export_rna_seq_alignment_accepted_sam",
+	    params => \@args,
+    });
+    if ($result) {
+	if ($result->is_error) {
+	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
+					       code => $result->content->{error}->{code},
+					       method_name => 'export_rna_seq_alignment_accepted_sam',
+					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
+					      );
+	} else {
+	    return wantarray ? @{$result->result} : $result->result->[0];
+	}
+    } else {
+        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method export_rna_seq_alignment_accepted_sam",
+					    status_line => $self->{client}->status_line,
+					    method_name => 'export_rna_seq_alignment_accepted_sam',
+				       );
+    }
+}
+ 
+
+
+=head2 export_rna_seq_alignment_accepted_unsorted_bam
+
+  $output = $obj->export_rna_seq_alignment_accepted_unsorted_bam($params)
+
+=over 4
+
+=item Parameter and return types
+
+=begin html
+
+<pre>
+$params is a kb_alignment_downloader.ExportParams
+$output is a kb_alignment_downloader.ExportOutput
+ExportParams is a reference to a hash where the following keys are defined:
+	input_ref has a value which is a string
+ExportOutput is a reference to a hash where the following keys are defined:
+	shock_id has a value which is a string
+
+</pre>
+
+=end html
+
+=begin text
+
+$params is a kb_alignment_downloader.ExportParams
+$output is a kb_alignment_downloader.ExportOutput
+ExportParams is a reference to a hash where the following keys are defined:
+	input_ref has a value which is a string
+ExportOutput is a reference to a hash where the following keys are defined:
+	shock_id has a value which is a string
+
+
+=end text
+
+=item Description
+
+
+
+=back
+
+=cut
+
+ sub export_rna_seq_alignment_accepted_unsorted_bam
+{
+    my($self, @args) = @_;
+
+# Authentication: required
+
+    if ((my $n = @args) != 1)
+    {
+	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
+							       "Invalid argument count for function export_rna_seq_alignment_accepted_unsorted_bam (received $n, expecting 1)");
+    }
+    {
+	my($params) = @args;
+
+	my @_bad_arguments;
+        (ref($params) eq 'HASH') or push(@_bad_arguments, "Invalid type for argument 1 \"params\" (value was \"$params\")");
+        if (@_bad_arguments) {
+	    my $msg = "Invalid arguments passed to export_rna_seq_alignment_accepted_unsorted_bam:\n" . join("", map { "\t$_\n" } @_bad_arguments);
+	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
+								   method_name => 'export_rna_seq_alignment_accepted_unsorted_bam');
+	}
+    }
+
+    my $url = $self->{url};
+    my $result = $self->{client}->call($url, $self->{headers}, {
+	    method => "kb_alignment_downloader.export_rna_seq_alignment_accepted_unsorted_bam",
+	    params => \@args,
+    });
+    if ($result) {
+	if ($result->is_error) {
+	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
+					       code => $result->content->{error}->{code},
+					       method_name => 'export_rna_seq_alignment_accepted_unsorted_bam',
+					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
+					      );
+	} else {
+	    return wantarray ? @{$result->result} : $result->result->[0];
+	}
+    } else {
+        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method export_rna_seq_alignment_accepted_unsorted_bam",
+					    status_line => $self->{client}->status_line,
+					    method_name => 'export_rna_seq_alignment_accepted_unsorted_bam',
+				       );
+    }
+}
+ 
+
+
+=head2 export_rna_seq_alignment
+
+  $output = $obj->export_rna_seq_alignment($params)
+
+=over 4
+
+=item Parameter and return types
+
+=begin html
+
+<pre>
+$params is a kb_alignment_downloader.GeneralExportParams
+$output is a kb_alignment_downloader.ExportOutput
+GeneralExportParams is a reference to a hash where the following keys are defined:
+	input_ref has a value which is a string
+	download_type has a value which is a string
+ExportOutput is a reference to a hash where the following keys are defined:
+	shock_id has a value which is a string
+
+</pre>
+
+=end html
+
+=begin text
+
+$params is a kb_alignment_downloader.GeneralExportParams
+$output is a kb_alignment_downloader.ExportOutput
+GeneralExportParams is a reference to a hash where the following keys are defined:
+	input_ref has a value which is a string
+	download_type has a value which is a string
+ExportOutput is a reference to a hash where the following keys are defined:
+	shock_id has a value which is a string
+
+
+=end text
+
+=item Description
+
+
+
+=back
+
+=cut
+
+ sub export_rna_seq_alignment
+{
+    my($self, @args) = @_;
+
+# Authentication: required
+
+    if ((my $n = @args) != 1)
+    {
+	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
+							       "Invalid argument count for function export_rna_seq_alignment (received $n, expecting 1)");
+    }
+    {
+	my($params) = @args;
+
+	my @_bad_arguments;
+        (ref($params) eq 'HASH') or push(@_bad_arguments, "Invalid type for argument 1 \"params\" (value was \"$params\")");
+        if (@_bad_arguments) {
+	    my $msg = "Invalid arguments passed to export_rna_seq_alignment:\n" . join("", map { "\t$_\n" } @_bad_arguments);
+	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
+								   method_name => 'export_rna_seq_alignment');
+	}
+    }
+
+    my $url = $self->{url};
+    my $result = $self->{client}->call($url, $self->{headers}, {
+	    method => "kb_alignment_downloader.export_rna_seq_alignment",
+	    params => \@args,
+    });
+    if ($result) {
+	if ($result->is_error) {
+	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
+					       code => $result->content->{error}->{code},
+					       method_name => 'export_rna_seq_alignment',
+					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
+					      );
+	} else {
+	    return wantarray ? @{$result->result} : $result->result->[0];
+	}
+    } else {
+        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method export_rna_seq_alignment",
+					    status_line => $self->{client}->status_line,
+					    method_name => 'export_rna_seq_alignment',
 				       );
     }
 }
@@ -330,16 +602,16 @@ sub version {
             Bio::KBase::Exceptions::JSONRPC->throw(
                 error => $result->error_message,
                 code => $result->content->{code},
-                method_name => 'export_rna_seq_alignment_as_tsv',
+                method_name => 'export_rna_seq_alignment',
             );
         } else {
             return wantarray ? @{$result->result} : $result->result->[0];
         }
     } else {
         Bio::KBase::Exceptions::HTTP->throw(
-            error => "Error invoking method export_rna_seq_alignment_as_tsv",
+            error => "Error invoking method export_rna_seq_alignment",
             status_line => $self->{client}->status_line,
-            method_name => 'export_rna_seq_alignment_as_tsv',
+            method_name => 'export_rna_seq_alignment',
         );
     }
 }
@@ -433,6 +705,43 @@ shock_id has a value which is a string
 
 a reference to a hash where the following keys are defined:
 shock_id has a value which is a string
+
+
+=end text
+
+=back
+
+
+
+=head2 GeneralExportParams
+
+=over 4
+
+
+
+=item Description
+
+input structure function for dynamic downloader
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a reference to a hash where the following keys are defined:
+input_ref has a value which is a string
+download_type has a value which is a string
+
+</pre>
+
+=end html
+
+=begin text
+
+a reference to a hash where the following keys are defined:
+input_ref has a value which is a string
+download_type has a value which is a string
 
 
 =end text

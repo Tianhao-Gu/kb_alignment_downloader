@@ -33,7 +33,7 @@ class kb_alignment_downloader(object):
             trust_all_ssl_certificates=trust_all_ssl_certificates,
             auth_svc=auth_svc)
 
-    def export_rna_seq_alignment_as_excel(self, params, context=None):
+    def export_rna_seq_alignment_as_zip(self, params, context=None):
         """
         :param params: instance of type "ExportParams" (input and output
            structure functions for standard downloaders) -> structure:
@@ -42,10 +42,10 @@ class kb_alignment_downloader(object):
            "shock_id" of String
         """
         return self._client.call_method(
-            'kb_alignment_downloader.export_rna_seq_alignment_as_excel',
+            'kb_alignment_downloader.export_rna_seq_alignment_as_zip',
             [params], self._service_ver, context)
 
-    def export_rna_seq_alignment_as_tsv(self, params, context=None):
+    def export_rna_seq_alignment_accepted_bam(self, params, context=None):
         """
         :param params: instance of type "ExportParams" (input and output
            structure functions for standard downloaders) -> structure:
@@ -54,7 +54,43 @@ class kb_alignment_downloader(object):
            "shock_id" of String
         """
         return self._client.call_method(
-            'kb_alignment_downloader.export_rna_seq_alignment_as_tsv',
+            'kb_alignment_downloader.export_rna_seq_alignment_accepted_bam',
+            [params], self._service_ver, context)
+
+    def export_rna_seq_alignment_accepted_sam(self, params, context=None):
+        """
+        :param params: instance of type "ExportParams" (input and output
+           structure functions for standard downloaders) -> structure:
+           parameter "input_ref" of String
+        :returns: instance of type "ExportOutput" -> structure: parameter
+           "shock_id" of String
+        """
+        return self._client.call_method(
+            'kb_alignment_downloader.export_rna_seq_alignment_accepted_sam',
+            [params], self._service_ver, context)
+
+    def export_rna_seq_alignment_accepted_unsorted_bam(self, params, context=None):
+        """
+        :param params: instance of type "ExportParams" (input and output
+           structure functions for standard downloaders) -> structure:
+           parameter "input_ref" of String
+        :returns: instance of type "ExportOutput" -> structure: parameter
+           "shock_id" of String
+        """
+        return self._client.call_method(
+            'kb_alignment_downloader.export_rna_seq_alignment_accepted_unsorted_bam',
+            [params], self._service_ver, context)
+
+    def export_rna_seq_alignment(self, params, context=None):
+        """
+        :param params: instance of type "GeneralExportParams" (input
+           structure function for dynamic downloader) -> structure: parameter
+           "input_ref" of String, parameter "download_type" of String
+        :returns: instance of type "ExportOutput" -> structure: parameter
+           "shock_id" of String
+        """
+        return self._client.call_method(
+            'kb_alignment_downloader.export_rna_seq_alignment',
             [params], self._service_ver, context)
 
     def status(self, context=None):

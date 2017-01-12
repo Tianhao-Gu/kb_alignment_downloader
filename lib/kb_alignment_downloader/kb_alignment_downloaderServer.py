@@ -329,14 +329,26 @@ class Application(object):
         self.serverlog.set_log_level(6)
         self.rpc_service = JSONRPCServiceCustom()
         self.method_authentication = dict()
-        self.rpc_service.add(impl_kb_alignment_downloader.export_rna_seq_alignment_as_excel,
-                             name='kb_alignment_downloader.export_rna_seq_alignment_as_excel',
+        self.rpc_service.add(impl_kb_alignment_downloader.export_rna_seq_alignment_as_zip,
+                             name='kb_alignment_downloader.export_rna_seq_alignment_as_zip',
                              types=[dict])
-        self.method_authentication['kb_alignment_downloader.export_rna_seq_alignment_as_excel'] = 'required' # noqa
-        self.rpc_service.add(impl_kb_alignment_downloader.export_rna_seq_alignment_as_tsv,
-                             name='kb_alignment_downloader.export_rna_seq_alignment_as_tsv',
+        self.method_authentication['kb_alignment_downloader.export_rna_seq_alignment_as_zip'] = 'required' # noqa
+        self.rpc_service.add(impl_kb_alignment_downloader.export_rna_seq_alignment_accepted_bam,
+                             name='kb_alignment_downloader.export_rna_seq_alignment_accepted_bam',
                              types=[dict])
-        self.method_authentication['kb_alignment_downloader.export_rna_seq_alignment_as_tsv'] = 'required' # noqa
+        self.method_authentication['kb_alignment_downloader.export_rna_seq_alignment_accepted_bam'] = 'required' # noqa
+        self.rpc_service.add(impl_kb_alignment_downloader.export_rna_seq_alignment_accepted_sam,
+                             name='kb_alignment_downloader.export_rna_seq_alignment_accepted_sam',
+                             types=[dict])
+        self.method_authentication['kb_alignment_downloader.export_rna_seq_alignment_accepted_sam'] = 'required' # noqa
+        self.rpc_service.add(impl_kb_alignment_downloader.export_rna_seq_alignment_accepted_unsorted_bam,
+                             name='kb_alignment_downloader.export_rna_seq_alignment_accepted_unsorted_bam',
+                             types=[dict])
+        self.method_authentication['kb_alignment_downloader.export_rna_seq_alignment_accepted_unsorted_bam'] = 'required' # noqa
+        self.rpc_service.add(impl_kb_alignment_downloader.export_rna_seq_alignment,
+                             name='kb_alignment_downloader.export_rna_seq_alignment',
+                             types=[dict])
+        self.method_authentication['kb_alignment_downloader.export_rna_seq_alignment'] = 'required' # noqa
         self.rpc_service.add(impl_kb_alignment_downloader.status,
                              name='kb_alignment_downloader.status',
                              types=[dict])
