@@ -105,7 +105,7 @@ class RNASeqAlignmentDownloader:
 				download_file_path = original_zip_file_path[:-4] + '/' + download_file_name
 
 		log ('loading %s to shock' % download_file_path)
-		shock_id = self._upload_to_shock(accepted_bam_file_path)
+		shock_id = self._upload_to_shock(download_file_path)
 
 		log('--->\nremoving folder: %s' % dstdir)
 		shutil.rmtree(dstdir)
