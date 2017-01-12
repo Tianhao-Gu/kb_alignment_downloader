@@ -13,8 +13,7 @@ def log(message):
 class RNASeqAlignmentDownloader:
 
 	def __init__(self, config):
-		log('--->\nInitializing RNASeqAlignmentDownloader instance:\n config:')
-		log(config)
+		log('--->\nInitializing RNASeqAlignmentDownloader instance:\n config: %s' % config)
 		self.scratch = config['scratch']
 		self.callback_url = config['SDK_CALLBACK_URL']
 		self.token = config['KB_AUTH_TOKEN']
@@ -32,7 +31,7 @@ class RNASeqAlignmentDownloader:
 
 	"""
 	def download_rna_seq_alignment(self, params):
-		log('--->\nrunning download_rna_seq_alignment:\nparams: %s' % params)
+		log('--->\nrunning RNASeqAlignmentDownloader.download_rna_seq_alignment:\nparams: %s' % params)
 
 		# validate params 
 		self.validate_download_rna_seq_alignment_parameters(params)
@@ -106,9 +105,7 @@ class RNASeqAlignmentDownloader:
 				download_file_path = original_zip_file_path[:-4] + '/' + download_file_name
 
 		log ('loading %s to shock' % download_file_path)
-		# shock_id = self._upload_to_shock(accepted_bam_file_path)
-
-		shock_id = 'aaa'
+		shock_id = self._upload_to_shock(accepted_bam_file_path)
 
 		log('--->\nremoving folder: %s' % dstdir)
 		shutil.rmtree(dstdir)
@@ -117,6 +114,10 @@ class RNASeqAlignmentDownloader:
 
 		return returnVal
 
+	"""
+	_get_object_data: get object_data using DataFileUtil
+
+	"""
 	def _get_object_data(self, input_ref):
 
 		get_objects_params = {
@@ -128,6 +129,10 @@ class RNASeqAlignmentDownloader:
 
 		return object_data
 
+	"""
+	_get_handle_data: get Handle from object_data
+
+	"""
 	def _get_handle_data(self, object_data):
 
 		try:
@@ -142,6 +147,10 @@ class RNASeqAlignmentDownloader:
 		else:
 			return handle
 
+	"""
+	_download_original_zip_file: download original archive .zip file using DataFileUtil
+	
+	"""
 	def _download_original_zip_file(self, handle_id, dstdir):
 
 		shock_to_file_params = {
@@ -154,6 +163,10 @@ class RNASeqAlignmentDownloader:
 
 		return original_zip_file_path
 
+	"""
+	_upload_to_shock: upload target file to shock using DataFileUtil
+	
+	"""
 	def _upload_to_shock(self, file_path):
 
 		file_to_shock_params = {
@@ -165,6 +178,10 @@ class RNASeqAlignmentDownloader:
 
 		return shock_id
 
+	"""
+	_get_download_file_name: translate download_type to actual file name
+	
+	"""
 	def _get_download_file_name(self, download_type):
 
 		if download_type == 'accepted_bam':
